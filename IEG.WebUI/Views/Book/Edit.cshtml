@@ -1,0 +1,46 @@
+﻿@model IEG.Domain.Entities.Book
+
+<h2>Edit Book</h2>
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="Id" />
+    <div class="form-group">
+        <label>Title</label>
+        <input class="form-control" asp-for="Title" />
+    </div>
+    <div class="form-group">
+        <label>Description</label>
+        <textarea class="form-control" asp-for="Description"></textarea>
+    </div>
+    <div class="form-group">
+        <label>Author</label>
+        <input class="form-control" asp-for="Author" />
+    </div>
+    <div class="form-group">
+        <label>Publisher</label>
+        <input class="form-control" asp-for="Publisher" />
+    </div>
+
+    <div class="form-group">
+        <label>Release Date</label>
+        <input type="date" class="form-control" asp-for="ReleaseDate" />
+    </div>
+
+    <div class="form-group">
+        <label>Price</label>
+        <input type="number" step="0.01" class="form-control" asp-for="Price" />
+    </div>
+
+    <div class="form-group">
+        <label>Front Image URL</label>
+        <input class="form-control" asp-for="imageURL"/>
+    </div>
+
+    <div class="form-group">
+        <label>Back Image URL</label>
+        <input class="form-control" asp-for="backgroundImageURL"/>
+    </div>
+
+
+    <button class="btn btn-success mt-3">Update</button>
+</form>

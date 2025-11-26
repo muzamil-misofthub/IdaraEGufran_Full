@@ -1,0 +1,41 @@
+﻿@model IEnumerable<IEG.Domain.Entities.Book>
+
+<h2>Books List</h2>
+<a class="btn btn-primary" href="/Book/Create">Add New Book</a>
+
+<table class="table table-bordered mt-3">
+    <thead>
+        <tr>
+            @* <th>Images</th> *@
+            <th>id</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Auther</th>
+            <th>Publisher</th>
+            <th>Release Date</th>
+            <th>Price</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var book in Model)
+        {
+            <tr>
+               
+                <td>@book.Id</td>
+                <td>@book.Title</td>
+                <td>@book.Description</td>
+                <td>@book.Author</td>
+                <td>@book.Publisher</td>
+                <td>@book.ReleaseDate</td>
+                <td>@book.Price.ToString("C")</td>
+                <td>
+                    <a class="btn btn-sm btn-info" href="/Book/View/@book.Id">View</a>
+                    <a class="btn btn-sm btn-warning" href="/Book/Edit/@book.Id">Edit</a>
+                    <a class="btn btn-sm btn-danger" href="/Book/Delete/@book.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>

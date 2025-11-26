@@ -1,0 +1,69 @@
+﻿@model IEG.Domain.Entities.Book
+
+@{
+    ViewData["Title"] = "Book Details";
+}
+
+<div class="container mt-4">
+    <div class="row">
+
+        <!-- LEFT SIDE (Two Vertical Boxes) -->
+        <div class="col-md-5">
+            <div class="p-3 border" style="min-height: 550px;">
+
+                <div style="border:1px solid #ccc; height:350px; margin-bottom:20px;">
+                    @* <img src="@Model.imageURL" alt="Front Cover" style="width: auto; height: 340px; border: 1px solid #ccc;" /> *@
+                    <img src="@Model.imageURL" alt="Front Cover" style="width: auto; height: 340px; border: 1px solid #ccc;" />
+                </div>
+
+                <div style="border:1px solid #ccc; height:350px;">
+                    <img src="@Model.backgroundImageURL" alt="Back Cover" style="width: auto; height: 340px; border: 1px solid #ccc;" />
+                </div>
+
+
+            </div>
+        </div>
+
+        <!-- RIGHT SIDE (Details Table) -->
+        <div class="col-md-7">
+
+            <h3 class="mb-3">@Model.Title</h3>
+            <h5 class="text-muted mb-4">@Model.Description</h5>
+
+            <hr />
+
+            <table class="table table-borderless" style="width:100%;">
+                <tr>
+                    <th style="width:200px;">ID:</th>
+                    <td>@Model.Id</td>
+                </tr>
+
+                <tr>
+                    <th>Author:</th>
+                    <td>@Model.Author</td>
+                </tr>
+
+                <tr>
+                    <th>Publisher:</th>
+                    <td>@Model.Publisher</td>
+                </tr>
+
+                <tr>
+                    <th>Release Date:</th>
+                    <td>@Model.ReleaseDate</td>
+                </tr>
+
+                <tr>
+                    <th>Price:</th>
+                    <td>@Model.Price</td>
+                </tr>
+            </table>
+
+            <hr />
+
+            <a class="btn btn-secondary" href="/Book">Back to List</a>
+
+        </div>
+
+    </div>
+</div>
