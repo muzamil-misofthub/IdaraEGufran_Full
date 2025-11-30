@@ -46,4 +46,32 @@ app.MapControllerRoute(
     //pattern: "{controller=Home}/{action=Index}/{id?}");
     pattern: "{controller=Book}/{action=Index}/{id?}");
 
+
+
+using (var scope = app.Services.CreateScope())
+{
+    var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+    var roles = new[] { "Admin", "User" };
+    foreach (var role in roles)
+    {
+        var exists = roleManager.RoleExistsAsync(role).GetAwaiter().GetResult();
+        if (!exists)
+        {
+            roleManager.CreateAsync(new IdentityRole(role)).GetAwaiter().GetResult();
+        }
+    }
+
+    var userManager = scope.ServiceProvider.GetRequiredService<UserManager<ApplicationUser>>();
+    var adminEmail = "admin@gmail.com";
+    var adminUser = userManager.FindByEmailAsync(adminEmail).GetAwaiter().GetResult();
+    if(adminUser == null)
+    {
+        adminUser = new ApplicationUser { UserName = adminEmail, Email = adminEmail };
+        userManager.CreateAsync(adminUser, "Admin@Admin0").GetAwaiter().GetResult();
+        userManager.AddToRoleAsync(adminUser, "Admin").GetAwaiter().GetResult();
+    }
+}
+
+
+
 app.Run();

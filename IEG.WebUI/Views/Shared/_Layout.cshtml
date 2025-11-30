@@ -30,7 +30,7 @@
                     </ul>
                 </div>
                 <div>
-                    @if(User.Identity.IsAuthenticated)
+                    @if (User.Identity.IsAuthenticated)
                     {
                         <a href="/Account/Logout">Logout(@User.Identity.Name)</a>
                     }
@@ -38,6 +38,10 @@
                     {
                         <a href="/Account/Login">Login</a>
                         <a href="/Account/Register">Register</a>
+                    }
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <a class="btn btn-danger" href="/Admin/ManageUsers">Manage Users</a>
                     }
                 </div>
             </div>

@@ -7,8 +7,10 @@ using System.Threading.Tasks;
 
 namespace IEG.Infrastructure.Models
 {
-    public class ApplicationUser:IdentityUser
+    public class ApplicationUser : IdentityUser
     {
-        public string? UserName { get; set; }
+        // Do not redeclare UserName — it is inherited from IdentityUser
+        // Add custom properties here if needed, e.g.:
+        // public string? FullName { get; set; }
     }
 }
