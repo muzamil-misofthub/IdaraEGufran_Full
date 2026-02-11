@@ -18,6 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\IEG.Application\IEG.Application.csproj" />
     <ProjectReference Include="..\IEG.Domain\IEG.Domain.csproj" />
   </ItemGroup>
 

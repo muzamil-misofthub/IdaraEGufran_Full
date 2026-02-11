@@ -11,7 +11,7 @@ namespace IEG.Infrastructure.Repositories
 {
     public class BookRepository : GenericRepository<Book>, IBookRepository
     {
-        public BookRepository(AppDbContext context) : base(context, context.Books)
+        public BookRepository(AppDbContext context) : base(context)
         {
         }
     }

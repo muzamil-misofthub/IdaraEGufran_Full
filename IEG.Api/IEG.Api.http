@@ -1,0 +1,6 @@
+@IEG.Api_HostAddress = http://localhost:5110
+
+GET {{IEG.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

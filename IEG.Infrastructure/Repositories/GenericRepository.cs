@@ -9,15 +9,16 @@ using System.Threading.Tasks;
 
 namespace IEG.Infrastructure.Repositories
 {
-    public class GenericRepository<T> :IGenericRepository<T> where T : class
+    public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
         protected readonly AppDbContext _context;
-        public readonly DbSet<T> _dbSet;
+        private readonly DbSet<T> _dbSet;
 
-        public GenericRepository(AppDbContext context, DbSet<T> dbSet)
+        // Updated constructor: accept only AppDbContext and resolve DbSet from it
+        public GenericRepository(AppDbContext context)
         {
             _context = context;
-            _dbSet = dbSet;
+            _dbSet = _context.Set<T>();
         }
 
         public async Task<IEnumerable<T>> GetAllAsync()
